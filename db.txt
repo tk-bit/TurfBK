@@ -1,0 +1,90 @@
+﻿   create table Turf(
+   turfid int primary key auto_increment,
+   tname varchar(40),
+   tprice int,
+   tcap int(5),
+   location varchar(30)
+   );
+
+
+
+create table custinfo(
+cid int primary key auto_increment,
+cname varchar(40),
+cemail varchar(20) unique,
+cphn int(20),
+cpass varchar(10));
+
+
+create table alloted(
+aid int primary key auto_increment,
+cid int not null,
+turfid int not null,
+adate date,
+no_of_slots int,
+constraint fk_cid foreign key(cid) references custinfo(cid),
+constraint fk_turfid foreign key(turfid) references turf(turfid)
+);
+
+
+create table bill(
+billid int primary key auto_increment,
+bdate date,
+aid int,
+amt int,
+constraint fk_aid foreign key(aid) references alloted(aid)
+);
+
+create table slot(
+sid int primary key auto_increment,
+slots varchar(10)
+);
+
+
+
+create table allotedDetails(
+adid int primary key auto_increment,
+aid int,
+sid int,
+constraint fk_sid foreign key(sid) references slot(sid),
+constraint fk_adaid foreign key(aid) references alloted(aid)
+);
+
+
+
+
+
+
+insert into Turf (tname,tprice)values('short pitch',1000);
+
+
+insert into slot (slots)values('10-11');
+insert into slot (slots)values('11-12');
+insert into slot (slots)values('12-1');
+insert into slot (slots)values('1-2');
+insert into slot (slots)values('2-3');
+insert into slot (slots)values('3-4');
+insert into slot (slots)values('4-5');
+insert into slot (slots)values('5-6');
+
+insert into alloted (cid,turfid,adate,no_of_slots)values(2,1,'1999-07-20',2);
+insert into alloted (cid,turfid,adate,no_of_slots)values(2,1,'1999-07-20',2);
+insert into alloted (cid,turfid,adate,no_of_slots)values(5,2,'1999-07-21',1);
+
+
+insert into allotedDetails (aid,sid)values(1,1);
+insert into allotedDetails (aid,sid)values(1,2);
+insert into allotedDetails (aid,sid)values(2,4);
+insert into allotedDetails (aid,sid)values(2,6);
+insert into allotedDetails (aid,sid)values(3,1);
+
+
+select slots from slot where sid in(select sid from slot where sid not in(select sid from allotedDetails where aid IN(select aid from alloted where adate='1999-07-20')));
+
+
+
+
+inser into bill(bdate,aid,amt) values(current date,ai,tot);
+
+select * from alloted where adate>now() and turfid=2;
+select slots from slot where sid IN (select sid from alloteddetails   where aid=4);

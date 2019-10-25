@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Rgistration Form </title>
+		<link rel="stylesheet" href="styl.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<div class="t">
+			<h2 style="font-size:30px">
+				REGISTRATION
+			</h2>
+			<br>
+                        <center>
+                            <form action="registration.jsp" method="post">
+                                Your Name :<br>
+                                <input id="fnam" type="text" name="fname" autocomplete="off" autofocus="on"><br><br>
+                                Email Id :<br>
+                                <input id="emal" type="email" name="email" autofocus="on" autocomplete="off"><br><br>
+                                Contact No. :<br>
+                                <input id="usr" type="text" name="user" pattern="^[7-9]{1}[0-9]{9}" autocomplete="off"><br><br>
+                                Create Password :<br>
+                                <input id="pass" type="password" name="pass1" autocomplete="off"><br><br>
+                                Confirm Password :<br>
+                                <input id="confpass" type="password" name="pass2" autocomplete="off">
+                                <script>
+                                function f(){
+                                var p1=document.getElementById("pass").value;
+                                var p2=document.getElementById("confpass").value;
+                                if(p1!=p2 ){
+                                document.getElementById("pass").style.borderColor= "#e34234";
+                                            document.getElementById("confpass").style.borderColor = "#e34234";
+                                            alert("Passwords Do not match");
+                                            return false;
+                                        } else {
+                                            document.getElementById("pass").style.borderColor = "#7FFF00";
+                                            document.getElementById("confpass").style.borderColor = "#7FFF00";
+                                        }
+                                        var p3 = document.getElementById("fnam").value;
+                                        var p4 = document.getElementById("emal").value;
+                                        var p5 = document.getElementById("usr").value;
+                                        if (p4 == false & p3 == false & p5 == false)
+                                        {
+                                            alert("please fill in all the details ");
+                                            return false;
+                                        } else if (p1 == false) {
+                                            alert("please create password");
+                                            return false;
+                                        }
+                                    }
+                                </script>
+                                <br>
+                        </center>
+                                <br><button type="submit" onclick="return f()" name="register" >Register</button>
+                            </form>
+		</div>	
+	</body>
+</html>

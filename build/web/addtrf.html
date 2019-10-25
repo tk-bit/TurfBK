@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Turf Adding Form </title>
+		<link rel="stylesheet" href="styl.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+                <style type="text/css">
+            body{
+                background-image:url("images/nice -back.jpg");		
+                background-position: bottom;
+                background-attachment:fixed;
+                background-repeat:no-repeat;
+                background-size:cover;
+                font-family:Century;
+            }
+        </style>
+	</head>
+	<body>
+		<div class="t">
+			<h2 style="font-size:30px">
+				Enter Details
+			</h2>
+			<br>
+                            <form action="addtrf.jsp" method="post">
+                                <center>
+                                Turf Name :<br>
+                                <input id="fnam" type="text" name="tname" autocomplete="off" autofocus="on"><br><br>
+                                Capacity :<br>
+                                <input id="emal" type="text" name="cap" autofocus="on" autocomplete="off"><br><br>
+                                Contact No. :<br>
+                                <input id="usr" type="text" name="user" pattern="^[7-9]{1}[0-9]{9}" autocomplete="off"><br><br>
+                                Enter price :<br>
+                                <input id="confpass" type="text" name="price" autocomplete="off">
+                                <br>
+                                </center>
+                                <br><button type="submit" onclick="return f()" name="register" >Confirm </button>
+                                </form>
+                            <script type="text/javascript">
+                                function f(){
+                                    var p2 = document.getElementById("confpass").value;
+                                    var p3 = document.getElementById("fnam").value;
+                                    var p4 = document.getElementById("emal").value;
+                                    var p5 = document.getElementById("usr").value;
+                                    if (p4 == false | p3 == false | p5 == false | p2==false)
+                                        {
+                                            alert("please fill in all the details ");
+                                            return false;
+                                        } 
+                                    }
+                                </script>
+		</div>	
+	</body>
+</html>
